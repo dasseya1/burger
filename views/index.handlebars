@@ -2,13 +2,14 @@
 <div class="container">
   <div class="row">
     <div class="col s12 center-align">
-      <h1 class="center-align text-warning">Caelina's Burger</h1>
+      <h1 class="center-align text-warning" id="bizname">Caelina's Burger</h1>
       <img class="center-align" id="logo" src="/assets/img/chicken-burger.png"></img>
-      <h3 class="center-align">Are you hungry? What do you want to eat?</h3> {{!-- Field where user can enter a new burger. The info is processed with a MySQL post query on submit --}}
+      <h3 class="center-align" id="hungryquest">Are you hungry? What do you want to eat?</h3> {{!-- Field where user can enter a new burger. The info is processed with a MySQL post query on submit --}}
       <form method="POST" action="/" class="button-size text-center">
-        <textarea type="text" name="burger_name" data-error="wrong" data-success="right" required></textarea>
+        <textarea type="text" id="burger_name" name="burger_name" data-error="wrong" data-success="right" required></textarea>
         <br>
-        <button class="waves-effect waves-light btn" type="submit">Order it!</button>
+        <br>
+        <button class="waves-effect waves-light btn" style="color: black !important;" type="submit">Order it!</button>
       </form>
     </div>
   </div>
@@ -16,7 +17,7 @@
     <div class="col s12 m6">
       <ul class="collection with-header">
         <li class="collection-header center-align">
-          <h5>Ready To Eat</h5></li>
+          <h5 id="title2">Ready To Eat</h5></li>
         {{!-- This Handlebars code says, take each burger received from the get query, and display it here UNLESS devoured==true --}} {{#each burgers}} {{#unless this.devoured}}
         <li class="collection-item avatar">
           <img src="/assets/img/burger.png" alt="" class="circle">
@@ -25,7 +26,7 @@
           <form action="/{{this.id}}?_method=PUT" method="POST">
             <input type="hidden" name="id" value="{{this.devoured}}">
             <br>
-            <button class="waves-effect waves-light btn-floating btn-large secondary-content purple darken-1" type="submit">Devour it!</button>
+            <button class="waves-effect waves-light btn-floating btn-large secondary-content purple darken-1" type="submit">Eat it!</button>
           </form>
         </li>
         {{/unless}} {{/each}}
@@ -34,7 +35,7 @@
     <div class="col s12 m6">
       <ul class="collection with-header">
         <li class="collection-header center-align">
-          <h5>Devoured Burgers</h5></li>
+          <h5 id="title3">Devoured Burgers</h5></li>
         {{!-- This Handlebars code says, "Display all the burgers for which devoured==true" --}} {{#each burgers}} {{#if this.devoured}}
         <li class="collection-item avatar">
           <img src="/assets/img/wrapper.png" alt="" class="circle">
