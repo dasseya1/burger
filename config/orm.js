@@ -6,7 +6,7 @@ var orm = {
     var queryString = "SELECT * FROM ??";
     connection.query(queryString, [tableName], function(err, result) {
       if (err) {
-        throw err;
+        console.log(err);
       } else {
         cb(result);
       }
@@ -16,7 +16,7 @@ var orm = {
     var queryString = "INSERT INTO ?? (??) VALUES (?)";
     connection.query(queryString, [tableName, column, value], function(err, result) {
       if (err) {
-        throw err;
+        console.log(err);
       } else {
         cb(result);
       }
@@ -26,7 +26,7 @@ var orm = {
     var queryString = "UPDATE ?? SET ??=? WHERE ??=?";
     connection.query(queryString, [tableName, colVal, boolean, colName, condition], function(err, result) {
       if (err) {
-        throw err;
+        console.log(err);
       } else {
         cb(result);
       }
