@@ -8,9 +8,11 @@ var connection = require('../config/connection.js');
 //Grabs the data from the burgers table...all of the burgers! These are sorted later with Handlebars #if and #unless statements
 router.get("/", function(req, res) {
   burger.selectAll(function(data) {
+    // Display last ten items
+    dataToDisplay = data.slice(Math.max(data.length - 10, 1));
 
     res.render("index", {
-      burgers: data
+      burgers: dataToDisplay
     });
   });
 });
